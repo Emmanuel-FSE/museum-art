@@ -1,20 +1,26 @@
 document.addEventListener("DOMContentLoaded", fetchData);
 
+//Fetch related data
+
 function fetchData(e){
     e.preventDefault();
-    fetch("https://openaccess-api.clevelandart.org/api/artworks/?has_image&limit=12")
+    fetch("https://openaccess-api.clevelandart.org/api/artworks/?skip=13&limit=20",)
     .then(res => res.json())
     .then(data => renderArt(data))
+    .catch(error => console.log(error))
 }
+
+// Render all art pictures.
 
 function renderArt(arr){
     arr.data.forEach(element => {
         let cardDiv = document.createElement("div")
         cardDiv.className = "cardB";
+        cardDiv.classList.add();
         cardDiv.innerHTML = 
         `
             <div class="image">
-                <img src="${element.images.web.url}">
+                <img style="height: 300px" src="${element.images.print.url}">
             </div>
                 <div style="height: 200px" class="overflow-scroll">
                     <div class="title">
@@ -24,6 +30,7 @@ function renderArt(arr){
                     <p>${element.wall_description}</p>
                     </div>
                 </div>
+                <p class="p-3">Created at: ${element.creation_date} by: ${element.creators[0].description}</p>
                 <div class="mt-3 mb-3 d-flex justify-content-evenly">
                     <button name="${element.id}" onclick="like(this)" class="btn btn-danger">Like!</button>
                     <p id="${element.id}" class="btn btn-success visually-hidden">&#x2713;</p>
@@ -33,6 +40,8 @@ function renderArt(arr){
     document.querySelector("#displayCard").appendChild(cardDiv)
     });
 }
+
+// Implement like functionality
 
 function like(target){
    let pTag = document.getElementById(`${target.name}`)
@@ -45,6 +54,8 @@ function like(target){
     target.textContent = "Like!"
    }
 }
+
+// Search for an artist
 
 
 let divNames = document.querySelector("#names")
