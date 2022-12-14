@@ -1,29 +1,29 @@
 document.addEventListener("DOMContentLoaded", fetchData);
 
 function fetchData(){
-    fetch("https://api.harvardartmuseums.org/Image?apikey=99681100-3da5-46dc-a187-80d1222a8d06")
+    fetch("https://openaccess-api.clevelandart.org/api/artworks/?has_image&limit=20")
     .then(res => res.json())
     .then(data => renderArt(data))
 }
 
-function renderArt(data){
-    console.log(data.records)
-    data.records.forEach(element => {
+function renderArt(arr){
+    console.log(arr.data)
+    arr.data.forEach(element => {
         let cardDiv = document.createElement("div")
-        cardDiv.innerHTML = `<div class="card m-3" id="card" style="max-width: 540px;">
-        <div class="row no-gutters">
-        <div class="col-md-4">
-            <img src="${element.baseimageurl}" class="card-img" alt="...">
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        cardDiv.className = "cardB";
+        cardDiv.innerHTML = 
+        `
+            <div class="image">
+            <img src="${element.images.web.url}">
             </div>
-        </div>
-        </div>
-    </div>`
+            <div class="title">
+            <h1>${element.title}</h1>
+            </div>
+            <div class="des">
+            <p>${element.wall_description}</p>
+            <button class="btn btn-danger">like</button>
+            </div>
+        `
     document.querySelector("#displayCard").appendChild(cardDiv)
     });
 }
