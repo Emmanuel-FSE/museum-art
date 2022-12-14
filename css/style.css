@@ -22,6 +22,14 @@
     margin-left: 39px;
 }
 
+@media (max-width: 768px) {
+    .cardB{
+        display: block;
+        width: 50%;
+        margin: auto;
+    }
+}
+
 .image img{
     width: 100%;
     border-top-right-radius: 5px;
