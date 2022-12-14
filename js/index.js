@@ -1,13 +1,13 @@
 document.addEventListener("DOMContentLoaded", fetchData);
 
-function fetchData(){
+function fetchData(e){
+    e.preventDefault();
     fetch("https://openaccess-api.clevelandart.org/api/artworks/?has_image&limit=12")
     .then(res => res.json())
     .then(data => renderArt(data))
 }
 
 function renderArt(arr){
-    console.log(arr.data)
     arr.data.forEach(element => {
         let cardDiv = document.createElement("div")
         cardDiv.className = "cardB";
@@ -44,4 +44,31 @@ function like(target){
     pTag.classList.add("visually-hidden")
     target.textContent = "Like!"
    }
+}
+
+
+let divNames = document.querySelector("#names")
+let form = document.getElementById("search")
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+    fetch(`https://openaccess-api.clevelandart.org/api/creators/?name=${e.target.search.value}&limit=10`)
+    .then(res => res.json())
+    .then(data => renderSearch(data))
+    e.target.search.value = "";
+    divNames.innerHTML = "";
+})
+
+function renderSearch(arr){
+    arr.data.forEach(element => {
+        let ulNames = document.createElement("ul")
+        ulNames.innerHTML = `
+        <li class="text-danger">
+            <ul>
+              <li>${element.name}</li>
+              <li>${element.nationality}</li>
+            <ul>
+        </li>
+        `
+        divNames.appendChild(ulNames);
+    })
 }

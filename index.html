@@ -13,22 +13,22 @@
         <nav class="navbar nav p-3">
             <div class="container-fluid">
               <p class="btn navbar-brand fs-2 btn-warning ms-5">Museum Art</p>
-              <form class="d-flex border border-success p-3 bg-dark rounded me-5" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <form id="search" class="d-flex border border-success p-3 bg-dark rounded me-5" role="search">
+                <input name="search" class="form-control me-2" type="search" placeholder="Name of artist  -small-letters-" aria-label="Search">
                 <button class="btn btn-warning btn-outline-danger text-dark" type="submit">Search</button>
               </form>
             </div>
         </nav>
     </header>
     <section class="mainSection" id="displayCard">
-      <div class="text-center">
+      <div class="container" id="names">
+      </div>
+      <div class="text-center text-dark">
         <div>
-          <p>This is a collection of the finest art that is form the <strong>Harvard Museum!</strong></p>
-          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta odit ex consequatur, soluta laboriosam asperiores magni voluptatum aliquam itaque quae quos culpa explicabo aspernatur commodi laudantium alias! Doloremque, expedita molestias?</p>
+          <p>This is a collection of the finest art that is form the <strong>Cleveland Art.</strong></p>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta odit ex consequatur <br>, soluta laboriosam asperiores magni voluptatum aliquam itaque quae quos culpa explicabo aspernatur commodi laudantium alias! <br> Doloremque, expedita molestias?</p>
         </div>
       </div>
-    </section>
-    <section>
     </section>
     <script src="./js/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
