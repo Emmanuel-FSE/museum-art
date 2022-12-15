@@ -13,6 +13,10 @@
     display: none;
 }
 
+.note{
+    width: 75%;
+    margin: auto;
+}
 .cardB{
     width: 20%;
     display: inline-block;
@@ -25,7 +29,7 @@
 @media (max-width: 768px) {
     .cardB{
         display: block;
-        width: 50%;
+        width: 75%;
         margin: auto;
     }
 }
